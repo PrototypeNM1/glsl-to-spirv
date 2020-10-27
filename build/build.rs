@@ -24,6 +24,9 @@ fn main() {
         panic!("Missing target support {}", target);
     };
 
+    if target.contains("android") {
+        println!("cargo:rustc-link-lib=c++abi");
+    }
     println!("cargo:rustc-link-search={}", bin_dir.to_str().unwrap());
     println!("cargo:rustc-link-lib=glslang");
     println!("cargo:rustc-link-lib=HLSL");
